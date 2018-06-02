@@ -1,0 +1,1 @@
+export default sap.ui.demokit.UI5EntityCueCard;

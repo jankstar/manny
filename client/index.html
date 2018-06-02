@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manny Datamanager</title>
+
+    <!-- Bootstrapping UI5 -->
+    <script id="sap-ui-bootstrap" 
+        src="https://openui5.hana.ondemand.com/1.48.10/resources/sap-ui-core.js" 
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-theme="sap_belize" 
+        data-sap-ui-compatVersion="edge" 
+        data-sap-ui-preload="async" 
+        data-sap-ui-resourceroots='{"manny.client.worklist": "."}'
+        data-sap-ui-frameOptions="trusted">
+        </script>
+
+    <!-- Convert typescript generated modules/classes into ui5 modules/classes -->
+    <script type="text/javascript" src="./ui5ts/ui5ts.js"></script>
+
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            sap.ui.require([
+                "sap/m/Shell",
+                "sap/ui/core/ComponentContainer"
+            ], function (Shell, ComponentContainer) {
+                // initialize the UI component
+                new Shell({
+                    app: new ComponentContainer({
+                        height: "100%",
+                        name: "manny.client.worklist"
+                    })
+                }).placeAt("content");
+            });
+        });
+    </script>
+
+</head>
+
+<!-- UI Content -->
+
+<body class="sapUiBody">
+    <div id="content"></div>
+</body>
+
+</html>

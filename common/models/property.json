@@ -1,0 +1,51 @@
+{
+  "name": "property",
+  "plural":"property",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "hnr": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+    "permission": "ALLOW",
+    "principalType": "ROLE",
+    "principalId": "r_admin_access",
+    "accessType": "*",
+    "property": "*"
+    },{
+      "permission": "DENY",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "accessType": "*",
+      "property": "*"
+      }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ui5ts@^0.3.2",
+        "scope": null,
+        "escapedName": "ui5ts",
+        "name": "ui5ts",
+        "rawSpec": "^0.3.2",
+        "spec": ">=0.3.2 <0.4.0",
+        "type": "range"
+      },
+      "C:\\Users\\jan\\nodes\\manny"
+    ]
+  ],
+  "_from": "ui5ts@>=0.3.2 <0.4.0",
+  "_id": "ui5ts@0.3.2",
+  "_inCache": true,
+  "_location": "/ui5ts",
+  "_nodeVersion": "9.8.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/ui5ts_0.3.2_1525770279233_0.35305548399386955"
+  },
+  "_npmUser": {
+    "name": "lmcarreiro",
+    "email": "leonardo.mcarreiro@gmail.com"
+  },
+  "_npmVersion": "5.3.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ui5ts@^0.3.2",
+    "scope": null,
+    "escapedName": "ui5ts",
+    "name": "ui5ts",
+    "rawSpec": "^0.3.2",
+    "spec": ">=0.3.2 <0.4.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ui5ts/-/ui5ts-0.3.2.tgz",
+  "_shasum": "70be37e8e830483f759c17c1cb6c2b67c9061724",
+  "_shrinkwrap": null,
+  "_spec": "ui5ts@^0.3.2",
+  "_where": "C:\\Users\\jan\\nodes\\manny",
+  "author": {
+    "name": "Leonardo Machado Carreiro",
+    "email": "leonardo.mcarreiro@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/lmcarreiro/ui5ts/issues"
+  },
+  "dependencies": {},
+  "description": "A simple adapter to develop SAPUI5 and OpenUI5 applications using TypeScript and ES2015 modules/classes",
+  "devDependencies": {
+    "@types/jquery": "^2.0.47",
+    "@types/node": "^8.0.33",
+    "@types/request": "^2.0.4",
+    "request": "^2.83.0",
+    "typescript": "^2.7.0-dev.20171031"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-yO4z2qDjKbF/I+Hku5QwaBf174vJjorWwns7HNyxyjPpynRT3Yo18TCZsOLnsqRtDL/EIjIDplpP4DhF2UFjSQ==",
+    "shasum": "70be37e8e830483f759c17c1cb6c2b67c9061724",
+    "tarball": "https://registry.npmjs.org/ui5ts/-/ui5ts-0.3.2.tgz",
+    "fileCount": 695,
+    "unpackedSize": 18097964,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa8WgoCRA9TVsSAnZWagAAEdAP/i/McStDc03clDqmkGbV\neQdbw83xw04cIMZXHdmnRy/FrTa8Gl6Sn+YEpb1VChWHkGpgzZ8S9nHu6AIJ\nYFayf9Kl2F3bAcPuSXGTzL7lmGeJQ5ep1SLm8zhxflVnmx76LViQtfYR4eP1\naLNMo3ZHqouGKg35rKfx3W5Cqz/GEheYcT+yKhZ6f/mB3CWvCgQXDsPByNUc\n0ohqcl79lBoROKFWYk6xXRCT/6454WINpokcrwRqGcbNE7MSBE7kWPEljWVS\nJJElagg4S6TNTPgX49JXmI9H0MC5Z2dvffPjVamkAkMootWjouS6IczgG5P1\nfFpMIj+0RVlE+HB/nDwnjSo/fF2QbbdJpHm+9DG/3dvPyxE6YFzSZ7+hfSKR\n6/wkkEJv4SJkVVE0KYRdzYxkjuyveyALMcd7qh2BpdflD17G6UkCq5joSO+S\nOyH55MhRVzC7KrHRSo3WRibQskdQS1pKJpG+3q6QAvJ2kQSa3NpVX2TjO7Ur\nlAtMQz8KPuZWbOl8rGth5MqZWdkAltIC0fgOE7E7g74KIU1YuGxVT3lOmqZv\nW660xENXwiEyj70lXu0AoPMVzGslZWKDS6kjW4NyWWjmFUlSgC2DdUkhRZ1A\nhW5bOVldSiNN0KFD9NysBQU4xE29Uk/DIRZN5sYmWeogR367LrP4rkzzRuUx\nI+5z\r\n=RyO1\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "f30f0872e7e2513471bde2e79aa012c1f5e99d58",
+  "homepage": "https://github.com/lmcarreiro/ui5ts",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5",
+    "typescript"
+  ],
+  "maintainers": [
+    {
+      "name": "lmcarreiro",
+      "email": "leonardo.mcarreiro@gmail.com"
+    }
+  ],
+  "name": "ui5ts",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmcarreiro/ui5ts.git"
+  },
+  "scripts": {
+    "build:generator": "tsc -p src/generator/tsconfig.json",
+    "build:lib": "tsc -p src/lib/tsconfig.json",
+    "generate": "npm run build:generator && node src/generator/index.js",
+    "prepack": "npm run generate && npm run build:lib",
+    "start": "npm run generate && npm run build:lib"
+  },
+  "version": "0.3.2"
+}

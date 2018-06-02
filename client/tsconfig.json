@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "sourceMap": true,
+        "baseUrl": "./",
+        "paths": {
+            "manny.client.worklist/*": [
+                "./*"
+            ],
+            "sap/*": [
+                "./ui5ts/exports/sap/*"
+            ]
+        }
+    },
+    "files": [
+        "./ui5ts/ui5ts.d.ts",
+        "./ui5ts/ui5-types/1.48/sap.d.ts",
+        "./ui5ts/ui5-types/1.48/jQuery.d.ts"
+    ],
+    "include": [
+        "./**/*",
+        "node_modules/@types"
+    ],
+    "exclude": [
+        "node_modules",
+        "resources",
+        "**/*.spec.ts",
+        "./alt/*"
+    ]
+}

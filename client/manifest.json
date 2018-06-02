@@ -1,0 +1,153 @@
+{
+	"_version": "1.2.0",
+
+	"sap.app": {
+		"_version": "1.2.0",
+		"id": "manny.client.worklist",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri" : "$metadata",
+					"maxAge" : 360 
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"_version": "1.2.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		],
+		"fullWidth" : true 
+	},
+
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"rootView": {
+			"viewName": "manny.client.worklist.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+
+		"dependencies": {
+			"minUI5Version": "1.48.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.48.0"
+				},
+				"sap.m": {
+					"minVersion": "1.48.0"
+				},
+				"sap.ui.layout" : {
+					"minVersion": "1.48.0"
+				}
+			}
+		},
+
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "manny.client.worklist.i18n.i18n"
+				}
+			},
+			"" : {
+				"dataSource": "mainService",
+				"id" : "mainModel",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					}
+				}
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "manny.client.worklist.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": ["notFound"]
+				},
+				"async": true
+			},
+
+			"routes": [
+				{
+					"pattern": "worklist",
+					"name": "worklist",
+					"target": ["worklist"]
+				},
+				{
+					"pattern": "Objects/{id}",
+					"name": "object",
+					"target": ["object"]
+				},
+				{
+					"pattern": "login",
+					"name": "login",
+					"target": ["login"]
+				}
+			],
+
+			"targets": {
+				"worklist": {
+					"viewName": "Worklist",
+					"viewId": "worklist",
+					"viewLevel": 1
+				},
+				"object": {
+					"viewName": "Object",
+					"viewId": "object",
+					"viewLevel": 2
+				},
+				"login": {
+					"viewName": "Login",
+					"viewId": "login"
+				},
+				"objectNotFound": {
+					"viewName": "ObjectNotFound",
+					"viewId": "objectNotFound"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				}
+			}
+		}
+	}
+}

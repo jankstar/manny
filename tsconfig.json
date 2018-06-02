@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+		"emitDecoratorMetadata": false,
+		"experimentalDecorators": false,
+		"module": "commonjs",
+		"target": "es5",
+		"noImplicitAny": false,
+		"sourceMap": true,
+		"removeComments": true,
+		"moduleResolution": "classic"
+    },
+    "include": [
+        "./server/**/*",
+        "./client/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
