@@ -12,7 +12,7 @@ export default {
 
 	/**
 	 * @function createDeviceModel
-	 * @description erstellt ein odataModel und ermittelt ggf. aus cookie das User-Token
+	 * @description create an odataModel and looking for an User-Token
 	 */
 	createDeviceModel(accessToken: string): ODataModel {
 		if (accessToken) {
@@ -21,7 +21,7 @@ export default {
 				this.userData.token = accessToken;
 			};
 		} else {
-			// kein token mitgegeben -> aus cookie
+			// no token found -> take cookies
 			if (!this.userData.token) {
 				this.getUser();
 			};
@@ -81,11 +81,11 @@ export default {
 	/*******************************************************************
 	 * @function getUser
 	 * @returns userDate json
-	 * @description liefert die User-Daten zurück; wenn kein token, dann
-	 *              wird dieses aus cookie ermitelt
+	 * @description get back the User-Daten; if no token found,
+	 *              it will look kat cookies
 	 */
 	getUser: function () {
-		//token schon da?
+		//token found?
 		if (this.userData.token && this.userData.id) {
 			if (!this.userData.name) {
 				this.getUserFromDB(this.userData.token, this.userData.id);
