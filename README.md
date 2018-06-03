@@ -27,7 +27,7 @@ autorization with header token is activ and `sap.ui.model.odata.v2.ODataModel` n
 ### Initialization
 at boot-time `init_db` will set an `admin` user by default
 
-# SAPUi5 Client
+## SAPUi5 Client
 library `models.ts` will handle users with autorization-token
 if no token found, `Login.view' will start 
 
