@@ -9,13 +9,13 @@ The project use
 ## Loopback 
 
 ### Odata-Server
-component-config.json
-'''
+change `component-config.json` for Odata-Server customizing 
+```
   "n-odata-server": {
     "path": "/odata/*",
     "odataversion": "2",
     "useViaMiddleware": true
   }
-'''
+```
 
 
