@@ -21,10 +21,10 @@ export default class App extends BaseController {
             oViewModel.setProperty("/delay", iOriginalBusyDelay);
         };
 
-        this.getOwnerComponent().getModel().metadataLoaded().
+        (<sap.ui.model.odata.v2.ODataModel> this.getOwnerComponent().getModel()).metadataLoaded().
             then(fnSetAppNotBusy);
 
         // apply content density mode to root view
-        this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+        this.getView().addStyleClass((<any> this.getOwnerComponent()).getContentDensityClass());
     }
 }
