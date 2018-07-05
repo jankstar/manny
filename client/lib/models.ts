@@ -38,7 +38,7 @@ export default {
 	/**************************************************************
 	* 
 	*/
-	getUserFromDB(i_token: string, i_id: number) {
+	getUserFromDB(i_token: string, i_id: number ) {
 		if (!i_token && !this.userData.token || !i_id) {
 			return;
 		};
