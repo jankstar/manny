@@ -1,3 +1,3 @@
 ## Client
 
-SAPui5 Client with odata excess and authentication via token 
+SAPui5 Client with odata access and authentication via token 
