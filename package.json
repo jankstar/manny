@@ -16,7 +16,7 @@
     "loopback-component-explorer": "^2.4.0",
     "n-odata-server": "^0.4.1",
     "serve-favicon": "^2.0.1",
-    "strong-error-handler": "^1.0.1",
+    "strong-error-handler": "^1.2.1",
     "ui5ts": "^0.3.2"
   },
   "devDependencies": {

@@ -28,22 +28,25 @@ define(["require", "exports", "sap/ui/base/Object", "sap/m/MessageBox"], functio
          */
         function ErrorHandler(oComponent) {
             var _this = _super.call(this) || this;
-            _this._oResourceBundle = oComponent.getModel("i18n").getResourceBundle();
+            var that = _this;
             _this._oComponent = oComponent;
             _this._oModel = oComponent.getModel();
+            _this._oResourceModel = oComponent.getModel("i18n");
+            _this._oResourceBundle = _this._oResourceModel.getResourceBundle();
             _this._bMessageOpen = false;
             _this._sErrorText = _this._oResourceBundle.getText("errorText");
             _this._oModel.attachMetadataFailed(function (oEvent) {
                 var oParams = oEvent.getParameters();
-                this._showMetadataError(oParams.response);
+                that._showMetadataError(oParams.response);
             }, _this);
-            var that = _this;
             _this._oModel.attachRequestFailed(function (oEvent) {
                 var oParams = oEvent.getParameters();
                 // An entity that was not found in the service is also throwing a 404 error in oData.
                 // We already cover this case with a notFound target so we skip it here.
                 // A request that cannot be sent to the server is a technical error that we have to handle though
-                if (oParams.response.statusCode !== "404" || (oParams.response.statusCode === 404 && oParams.response.responseText.indexOf("Cannot POST") === 0)) {
+                if (oParams.response.statusCode !== "404" ||
+                    (oParams.response.statusCode === 404 &&
+                        oParams.response.responseText.indexOf("Cannot POST") === 0)) {
                     that._showServiceError(oParams.response);
                 }
             }, _this);
@@ -57,6 +60,7 @@ define(["require", "exports", "sap/ui/base/Object", "sap/m/MessageBox"], functio
          * @private
          */
         ErrorHandler.prototype._showMetadataError = function (sDetails) {
+            var that = this;
             MessageBox_1.default.error(this._sErrorText, {
                 id: "metadataErrorMessageBox",
                 details: sDetails,
@@ -64,7 +68,7 @@ define(["require", "exports", "sap/ui/base/Object", "sap/m/MessageBox"], functio
                 actions: [MessageBox_1.default.Action.RETRY, MessageBox_1.default.Action.CLOSE],
                 onClose: function (sAction) {
                     if (sAction === MessageBox_1.default.Action.RETRY) {
-                        this._oModel.refreshMetadata();
+                        that._oModel.refreshMetadata();
                     }
                 }.bind(this)
             });
@@ -77,6 +81,7 @@ define(["require", "exports", "sap/ui/base/Object", "sap/m/MessageBox"], functio
          * @private
          */
         ErrorHandler.prototype._showServiceError = function (sDetails) {
+            var that = this;
             if (this._bMessageOpen) {
                 return;
             }
@@ -87,7 +92,7 @@ define(["require", "exports", "sap/ui/base/Object", "sap/m/MessageBox"], functio
                 styleClass: this._oComponent.getContentDensityClass(),
                 actions: [MessageBox_1.default.Action.CLOSE],
                 onClose: function () {
-                    this._bMessageOpen = false;
+                    that._bMessageOpen = false;
                 }.bind(this)
             });
         };

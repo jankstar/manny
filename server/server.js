@@ -2,6 +2,7 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var errorHandler = require('strong-error-handler');
 
 var app = module.exports = loopback();
 
@@ -9,6 +10,11 @@ app.use(loopback.token({
   //autorization with header token is activ
   //and "sap.ui.model.odata.v2.ODataModel" need options "headers: {"Authorization":"xx"}"  
     headers: ['Authorization']
+}));
+
+app.use(errorHandler({
+  debug: false, //app.get('env') === 'development',
+  log: true,
 }));
 
 app.start = function() {

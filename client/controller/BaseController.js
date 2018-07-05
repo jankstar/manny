@@ -84,7 +84,7 @@ define(["require", "exports", "sap/ui/core/mvc/Controller"], function (require, 
           */
         BaseController.prototype.onShareEmailPress = function () {
             var oViewModel = (this.getModel("objectView") || this.getModel("worklistView"));
-            sap.m.URLHelper.triggerEmail(null, oViewModel.getProperty("/shareSendEmailSubject"), oViewModel.getProperty("/shareSendEmailMessage"));
+            sap.m.URLHelper.triggerEmail('', oViewModel.getProperty("/shareSendEmailSubject"), oViewModel.getProperty("/shareSendEmailMessage"));
         };
         /**
           *
