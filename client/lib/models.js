@@ -9,7 +9,7 @@ define(["require", "exports", "sap/ui/model/odata/v2/ODataModel"], function (req
         },
         /**
          * @function createDeviceModel
-         * @description erstellt ein odataModel und ermittelt ggf. aus cookie das User-Token
+         * @description create an odataModel and looking for an User-Token
          */
         createDeviceModel: function (accessToken) {
             if (accessToken) {
@@ -20,7 +20,7 @@ define(["require", "exports", "sap/ui/model/odata/v2/ODataModel"], function (req
                 ;
             }
             else {
-                // kein token mitgegeben -> aus cookie
+                // no token found -> take cookies
                 if (!this.userData.token) {
                     this.getUser();
                 }
@@ -64,7 +64,8 @@ define(["require", "exports", "sap/ui/model/odata/v2/ODataModel"], function (req
                 },
                 error: function (oJqXHR, sTextStatus, sErrorThrown) {
                     console.log(oJqXHR.responseText);
-                    _this.userData.token = _this.userData.name = _this.userData.id = "";
+                    _this.userData.token = _this.userData.name = "";
+                    _this.userData.id = 0;
                 }
             });
         },
@@ -85,11 +86,11 @@ define(["require", "exports", "sap/ui/model/odata/v2/ODataModel"], function (req
         /*******************************************************************
          * @function getUser
          * @returns userDate json
-         * @description liefert die User-Daten zurück; wenn kein token, dann
-         *              wird dieses aus cookie ermitelt
+         * @description get back the User-Daten; if no token found,
+         *              it will look kat cookies
          */
         getUser: function () {
-            //token schon da?
+            //token found?
             if (this.userData.token && this.userData.id) {
                 if (!this.userData.name) {
                     this.getUserFromDB(this.userData.token, this.userData.id);

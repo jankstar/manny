@@ -126,7 +126,7 @@ define(["require", "exports", "./BaseController", "sap/ui/model/json/JSONModel",
             else {
                 // edit the search-field will chnage the query 
                 // of the table by field name
-                var oTableSearchState = [];
+                var oTableSearchState = new Array();
                 var sQuery = oEvent.getParameter("query");
                 if (sQuery && sQuery.length > 0) {
                     oTableSearchState = [new Filter_1.default("name", FilterOperator_1.default.Contains, sQuery)];

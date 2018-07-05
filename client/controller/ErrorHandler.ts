@@ -5,7 +5,7 @@ import MessageBox from "sap/m/MessageBox";
 export default class ErrorHandler extends UI5Object {
     private _oResourceModel: sap.ui.model.resource.ResourceModel;
     private _oResourceBundle: typeof jQuery.sap.util.ResourceBundle;
-    private _oComponent: sap.ui.core.UIComponent;
+    private _oComponent: sap.ui.core.UIComponent ;
     private _oModel: sap.ui.model.odata.v2.ODataModel;
     private _bMessageOpen: boolean;
     private _sErrorText: string;
@@ -17,27 +17,31 @@ export default class ErrorHandler extends UI5Object {
      * @public
      * @alias sap.ui.demo.worklist.controller.ErrorHandler
      */
-    public constructor(oComponent: sap.ui.core.UIComponent) {
+    public constructor(oComponent: sap.ui.core.UIComponent ) {
         super();
-        this._oResourceBundle = oComponent.getModel("i18n").getResourceBundle();
+        let that = this;
         this._oComponent = oComponent;
-        this._oModel = oComponent.getModel();
+        this._oModel = oComponent.getModel() as sap.ui.model.odata.v2.ODataModel;
+        this._oResourceModel = oComponent.getModel("i18n") as sap.ui.model.resource.ResourceModel;
+        this._oResourceBundle = this._oResourceModel.getResourceBundle();
         this._bMessageOpen = false;
         this._sErrorText = this._oResourceBundle.getText("errorText");
 
-        this._oModel.attachMetadataFailed(function (oEvent) {
+        this._oModel.attachMetadataFailed(function (oEvent: sap.ui.base.Event) {
             var oParams = oEvent.getParameters();
-            this._showMetadataError(oParams.response);
+            that._showMetadataError(oParams.response);
         }, this);
 
-        this._oModel.attachRequestFailed(function (oEvent) {
+        this._oModel.attachRequestFailed(function (oEvent: sap.ui.base.Event) {
             var oParams = oEvent.getParameters();
 
             // An entity that was not found in the service is also throwing a 404 error in oData.
             // We already cover this case with a notFound target so we skip it here.
             // A request that cannot be sent to the server is a technical error that we have to handle though
-            if (oParams.response.statusCode !== "404" || (oParams.response.statusCode === 404 && oParams.response.responseText.indexOf("Cannot POST") === 0)) {
-                this._showServiceError(oParams.response);
+            if (oParams.response.statusCode !== "404" ||
+                (oParams.response.statusCode === 404 &&
+                    oParams.response.responseText.indexOf("Cannot POST") === 0)) {
+                that._showServiceError(oParams.response);
             }
         }, this);
     };
@@ -49,16 +53,17 @@ export default class ErrorHandler extends UI5Object {
      * @private
      */
     private _showMetadataError(sDetails: string): void {
+        let that = this;
         MessageBox.error(
             this._sErrorText,
             {
                 id: "metadataErrorMessageBox",
                 details: sDetails,
-                styleClass: this._oComponent.getContentDensityClass(),
+                styleClass: (<any> this._oComponent).getContentDensityClass(),
                 actions: [MessageBox.Action.RETRY, MessageBox.Action.CLOSE],
-                onClose: function (sAction) {
+                onClose: function (sAction: string) {
                     if (sAction === MessageBox.Action.RETRY) {
-                        this._oModel.refreshMetadata();
+                        that._oModel.refreshMetadata();
                     }
                 }.bind(this)
             }
@@ -72,6 +77,7 @@ export default class ErrorHandler extends UI5Object {
      * @private
      */
     private _showServiceError(sDetails: string): void {
+        let that = this; 
         if (this._bMessageOpen) {
             return;
         }
@@ -81,10 +87,10 @@ export default class ErrorHandler extends UI5Object {
             {
                 id: "serviceErrorMessageBox",
                 details: sDetails,
-                styleClass: this._oComponent.getContentDensityClass(),
+                styleClass: (<any> this._oComponent).getContentDensityClass(),
                 actions: [MessageBox.Action.CLOSE],
                 onClose: function () {
-                    this._bMessageOpen = false;
+                    that._bMessageOpen = false;
                 }.bind(this)
             }
         );

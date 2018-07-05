@@ -5,6 +5,7 @@
  * @returns UI5 module.
  */
 declare function define(aDependencies: string[], vFactory: (...args: any[]) => any): any;
+
 /**
  * Convert a class definition to the UI5 format of inheritance. This decorator can only be used in a class that extends from
  * another UI5 class. If your class doesn't extends from any other, don't use this decorator or make your class extend from

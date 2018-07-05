@@ -31,14 +31,14 @@ export default {
 			useBatch: false,
 			headers: { "Authorization": this.userData.token }
 		});
-		oModel.setDefaultBindingMode("OneWay");
+		oModel.setDefaultBindingMode(<any>"OneWay");
 		return oModel;
 	},
 
 	/**************************************************************
 	* 
 	*/
-	getUserFromDB(i_token: string, i_id) {
+	getUserFromDB(i_token: string, i_id: number) {
 		if (!i_token && !this.userData.token || !i_id) {
 			return;
 		};
@@ -57,15 +57,16 @@ export default {
 			},
 			//data: JSON.stringify({
 			//}),
-			success: function (oResult) {
+			success: function (oResult: any) {
 				console.log(oResult);
 				_this.userData.name = oResult.username;
 				_this.userData.id = oResult.id;
 				_this.userData.token = i_token;
 			},
-			error: function (oJqXHR, sTextStatus, sErrorThrown) {
+			error: function (oJqXHR:any, sTextStatus:any, sErrorThrown:any) {
 				console.log(oJqXHR.responseText);
-				_this.userData.token = _this.userData.name = _this.userData.id = "";
+				_this.userData.token = _this.userData.name = "";
+				_this.userData.id = 0;
 			}
 		});
 	},
@@ -121,7 +122,7 @@ export default {
 	/*************************************************************
 	 * 
 	 */
-	setUser(i_token, i_id): void {
+	setUser(i_token: string, i_id: string): void {
 		var l_d = new Date();
 		var l_token = encodeURIComponent(i_token);
 		var l_id = encodeURIComponent(i_id);

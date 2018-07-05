@@ -16,9 +16,10 @@ declare interface JQuery {
 
 declare interface JQueryEventObject {}
 
-declare function jQuery(a?: any): any;
-declare interface jQuery {
-    
+//declare function jQuery(a?: any): any;
+declare module jQuery {
+    export function ajax(a?: any): any;
+    var sap: any;
 }
 
 declare interface JQueryStatic {

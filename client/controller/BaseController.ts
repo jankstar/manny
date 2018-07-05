@@ -75,7 +75,7 @@ export default class BaseController extends Controller {
     public onShareEmailPress() {
         var oViewModel = (this.getModel("objectView") || this.getModel("worklistView"));
         sap.m.URLHelper.triggerEmail(
-            null,
+            '',
             oViewModel.getProperty("/shareSendEmailSubject"),
             oViewModel.getProperty("/shareSendEmailMessage")
         );
